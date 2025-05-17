@@ -1,6 +1,7 @@
+import 'package:electrical_tools/routes/app_router.dart';
+import 'package:electrical_tools/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:electrical_tools/core/routes/app_routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

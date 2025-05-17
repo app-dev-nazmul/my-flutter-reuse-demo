@@ -1,6 +1,7 @@
-import 'package:electrical_tools/core/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../themes/app_theme.dart';
 
 class ThemeController extends GetxController {
   Rx<AppTheme> currentTheme = AppTheme.light.obs;

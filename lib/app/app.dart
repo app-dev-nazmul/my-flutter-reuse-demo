@@ -1,13 +1,12 @@
-import 'package:electrical_tools/core/routes/app_router.dart';
-import 'package:electrical_tools/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-
-import '../core/di/di.dart';
-import '../core/themes/app_theme.dart';
+import '../di/di.dart';
 import '../presentation/controller/theme_controller.dart';
+import '../routes/app_router.dart';
+import '../routes/app_routes.dart';
+import '../themes/app_theme.dart';
 
 Future<Widget> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
