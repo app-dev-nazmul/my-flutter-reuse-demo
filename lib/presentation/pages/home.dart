@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // 👈 Import this
 import 'package:responsive_framework/responsive_framework.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,13 +7,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     bool isMobile = ResponsiveBreakpoints.of(context).isMobile;
     bool isTablet = ResponsiveBreakpoints.of(context).isTablet;
     bool isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Responsive Home Page'),
+        title: Text(localizations.appName), // 👈 Localized App Name
       ),
       body: Center(
         child: Padding(
@@ -21,7 +24,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Welcome to Home Page!',
+                localizations.greetings, // 👈 Localized Greeting
                 style: TextStyle(
                   fontSize: isMobile ? 20 : isTablet ? 28 : 36,
                   fontWeight: FontWeight.bold,

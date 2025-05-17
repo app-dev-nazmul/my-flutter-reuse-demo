@@ -1,22 +1,34 @@
-import 'package:electrical_tools/presentation/pages/splash.dart';
 import 'package:flutter/material.dart';
-
 import '../../presentation/pages/home.dart';
+import '../presentation/pages/select_language.dart';
+import '../presentation/pages/splash.dart';
 import 'app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 class AppRouter {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case AppRoutes.splash:
-        return MaterialPageRoute(builder: (_) => const SplashPage());
-      case AppRoutes.home:
-        return MaterialPageRoute(builder: (_) => const HomePage());
-      default:
-        return MaterialPageRoute(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('Page not found')),
-          ),
-        );
-    }
-  }
+  static final GoRouter _router = GoRouter(
+    initialLocation: AppRoutes.splash,
+    routes: [
+      GoRoute(
+        path: AppRoutes.splash,
+        name: 'splash',
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        name: 'home',
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.language,
+        name: 'language',
+        builder: (context, state) => const SelectLanguage(),
+      ),
+    ],
+    errorBuilder:
+        (context, state) =>
+            const Scaffold(body: Center(child: Text('Page not found'))),
+  );
+
+  static GoRouter get router => _router;
 }

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../themes/app_theme.dart';
 
-class ThemeController extends GetxController {
-  Rx<AppTheme> currentTheme = AppTheme.light.obs;
+class ThemeController extends StateNotifier<AppTheme> {
+  ThemeController() : super(AppTheme.light);
 
-  ThemeData get themeData => appThemeData[currentTheme.value]!;
+  ThemeData get themeData => appThemeData[state]!;
 
-  void toggleTheme(){
-    currentTheme.value = currentTheme.value == AppTheme.light ? AppTheme.dark : AppTheme.light;
+  bool get isDarkMode => state == AppTheme.dark;
+
+  void toggleTheme() {
+    state = state == AppTheme.light ? AppTheme.dark : AppTheme.light;
   }
-
-  bool get isDarkMode => currentTheme.value == AppTheme.dark;
-
 }
+final themeControllerProvider =
+    StateNotifierProvider<ThemeController, AppTheme>((ref) {
+      return ThemeController();
+    });

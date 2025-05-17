@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @module
 abstract class RegisterModule {
@@ -13,4 +14,8 @@ abstract class RegisterModule {
       'Content-Type': 'application/json',
     },
   ));
+
+  @preResolve
+  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+
 }

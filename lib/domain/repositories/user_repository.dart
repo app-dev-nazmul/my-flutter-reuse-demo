@@ -1,4 +1,4 @@
 abstract class UserRepository {
-/*  Future<User> getUserProfile();
-  Future<List<Post>> getUserPosts(int userId);*/
+ Future<void> setUserLanguage(String lang);
+ Future<String?> getUserLanguage();
 }
